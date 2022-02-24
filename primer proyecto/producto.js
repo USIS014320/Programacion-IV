@@ -1,4 +1,5 @@
 Vue.component('v-select-categoria',VueSelect.VueSelect);
+
 Vue.component('producto',{
     data:()=>{
         return {
