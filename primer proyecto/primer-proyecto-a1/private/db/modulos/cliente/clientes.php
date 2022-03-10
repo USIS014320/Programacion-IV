@@ -1,5 +1,9 @@
 <?php
 include('../../db/db.php');
+$class_cliente = new Cliente($conexion);
+$datos = isset($datos) ? $datos : '[]';
+print_r($class_cliente->$accion($datos));
+
 class clientes{
     private $datos=[], $db;
     public $respuesta = ['msg'=>'correcto'];
