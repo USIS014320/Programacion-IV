@@ -1,67 +1,67 @@
 <?php
-include('../../db/db.php');
-$class_cliente = new Cliente($conexion);
-$datos = isset($datos) ? $datos : '[]';
-print_r($class_cliente->$accion($datos));
+include('../../db/DB.php');
+EXTRACT($_REQUEST);
 
-class clientes{
+$class_cliente =  new cliente($conexion);
+$datos = isset($datos) ? $datos : '[]';
+print_r(json_encode($class_cliente->$accion($datos)));
+
+class cliente{
     private $datos=[], $db;
     public $respuesta = ['msg'=>'correcto'];
 
-    public fuction cliente($db=''){
+    public function cliente($db=''){
         $this->db = $db;
     }
-    public fuction recibir_datos($cliente=''){
+    public function recibir_datos($cliente=''){
         $this->datos = json_decode($cliente, true);
-        $this->validar_datos();
+        return $this->validar_datos();
     }
-    private fuction validar_datos{
-        if(empty(trim($this->datos['codigo'])) ){
-            $this->respuesta['msg'] = 'El codigo es requerido';
+    private function validar_datos(){
+        if( empty(trim($this->datos['codigo'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese el codigo';
         }
-        if(empty(trim($this->datos['nombre'])) ){
-            $this->respuesta['msg'] = 'El nombre es requerido';
+        if( empty(trim($this->datos['nombre'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese el nombre';
         }
-        if(empty(trim($this->datos['direccion'])) ){
-            $this->respuesta['msg'] = 'La direccion es requerida';
+        if( empty(trim($this->datos['direccion'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese la direccion';
         }
-        if(empty(trim($this->datos['telefono'])) ){
-            $this->respuesta['msg'] = 'El telefono es requerido';
+        if( empty(trim($this->datos['telefono'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese el telefono';
         }
-        if(empty(trim($this->datos['dui'])) ){
-            $this->respuesta['msg'] = 'El dui es requerido';
+        if( empty(trim($this->datos['dui'])) ){
+            $this->respuesta['msg'] = 'Por favor ingrese el dui';
         }
+        return $this->almacenar_datos();
     }
-    $this->almacenar_datos();
-    
-        private fuction almacenar_datos(){
-            if($this->respuesta['msg'] == 'correcto'){
-                if($this->datos['accion'] == 'nuevo'){
-                    $this->consultas('INSERT INTO clientes(codigo, nombre, direccion, telefono, dui) 
-                    VALUES(?, ?, ?, ?, ?)',
-                     $this->datos['codigo'], $this->datos['nombre'], $this->datos['direccion'], 
-                     $this->datos['telefono'], $this->datos['dui']
-                    );
-                    return $this->db->obtenerUltimoId();
-                
-            }else if($this->datos['accion'] == 'modificar'){
-                $this->consultas('UPDATE clientes SET codigo=?, nombre=?, direccion=?, telefono=?, dui=? WHERE id=?',
-                $this->datos['codigo'], $this->datos['nombre'], $this->datos['direccion'], 
-                $this->datos['telefono'], $this->datos['dui'], $this->datos['id']
-            );
-            return $this->['idCliente'];
-            }
-                
-            }else if($this->datos['accion'] == 'eliminar'){
-                $this->consultas('DELETE FROM clientes WHERE id=?', $this->datos['id']);
+    private function almacenar_datos(){
+        if( $this->respuesta['msg']=='correcto' ){
+            if( $this->datos['accion']=='nuevo' ){
+                $this->db->consultas('INSERT INTO db_sistema_a1.clientes(idCliente, codigo, nombre, direccion, telefono, dui) 
+                    VALUES(?,?,?,?,?,?)',
+                    $this->datos['idCliente'], $this->datos['codigo'],$this->datos['nombre'],$this->datos['direccion'],
+                    $this->datos['telefono'], $this->datos['dui']
+                );
+                return $this->db->obtenerUltimoId();
+            }else if( $this->datos['accion']=='modificar' ){
+                $this->db->consultas('UPDATE db_sistema_a1.clientes SET codigo=?, nombre=?, direccion=?, telefono=?, dui=? 
+                    WHERE idCliente=?',
+                    $this->datos['codigo'],$this->datos['nombre'],$this->datos['direccion'],
+                    $this->datos['telefono'], $this->datos['dui'], $this->datos['idCliente']
+                );
+                return $this->datos['idCliente'];
+            }else if( $this->datos['accion']=='eliminar' ){
+                $this->db->consultas('DELETE FROM db_sistema_a1.clientes WHERE idCliente=?', $this->datos['idCliente']);
                 return $this->datos['idCliente'];
             }
-
-            }else{
-                returbn $this->respuesta;
-            }
+        } else{
+            return $this->respuesta;
         }
-
+    }
+    public function obtener_datos(){
+        $this->db->consultas('SELECT * FROM db_sistema_a1.clientes');
+        return $this->db->obtener_datos();
+    }
 }
-
 ?>

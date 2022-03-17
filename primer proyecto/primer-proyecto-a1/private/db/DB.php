@@ -1,4 +1,4 @@
 <?php
 include('config.php');
-$conexion = new DB('localhost', 'root',');'
+$conexion = new DB('mysql:host=localhost; charset=utf8', 'root', '');
 ?>

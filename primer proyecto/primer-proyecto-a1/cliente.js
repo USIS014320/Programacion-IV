@@ -17,14 +17,27 @@ Vue.component('cliente',{
         }
     },
     methods:{
+        sincronizarDatosServidor(cliente){
+            fetch(`private/modulos/cliente/cliente.php?datos=${JSON.stringify(cliente)}&accion=recibir_datos`, 
+                {credentials: 'same-origin'})
+                .then(res=>res.json())
+                .then(data=>{
+                    this.cliente.msg = `Cliente procesado ${data.msg}`;
+                })
+                .catch(err=>{
+                    this.cliente.msg = `Error al guardar el cliente ${err}`;
+                });
+        },
         buscandoCliente(){
             this.obtenerDatos(this.buscar);
         },
         eliminarCliente(cliente){
             if( confirm(`Esta seguro de eliminar el cliente ${cliente.nombre}?`) ){
-               let store = abrirStore('cliente', 'readwrite'),
+                cliente.accion = 'eliminar';
+                let store = abrirStore('cliente', 'readwrite'),
                    query = store.delete(cliente.idCliente);
                 query.onsuccess = e=>{
+                    this.sincronizarDatosServidor(cliente);
                     this.nuevoCliente();
                     this.obtenerDatos();
                     this.cliente.msg = 'Cliente eliminado con exito';
@@ -46,16 +59,7 @@ Vue.component('cliente',{
             }
             let query = store.put(this.cliente);
             query.onsuccess = e=>{
-                fetch('private/modulos/cliente/procesos/cliente.php',{
-                .then(res=>res.json())
-                .then(data=>{
-                    this.cliente.msg = 'Cliente procesado ${data.msg}';
-                })
-                .error.onerror = e=>{
-                    this.cliente.msg = `Error al guardar el cliente ${err}`;
-                });
-
-                
+                this.sincronizarDatosServidor(this.cliente);
                 this.nuevoCliente();
                 this.obtenerDatos();
                 this.cliente.msg = 'Cliente procesado con exito';
@@ -68,6 +72,27 @@ Vue.component('cliente',{
             let store = abrirStore('cliente', 'readonly'),
                 data = store.getAll();
             data.onsuccess = e=>{
+                if( data.result.length<=0 ){
+                    fetch(`private/modulos/cliente/cliente.php?accion=obtener_datos`, 
+                        {credentials: 'same-origin'})
+                        .then(res=>res.json())
+                        .then(data=>{
+                            this.clientes = data;
+                            data.map(cliente=>{
+                                let store = abrirStore('cliente', 'readwrite'),
+                                    query = store.put(cliente);
+                                query.onsuccess = e=>{
+                                    console.log(`Cliente ${cliente.nombre} guardado`);
+                                };
+                                query.onerror = e=>{
+                                    console.log(`Error al guardar el cliente ${e.target.error}`);
+                                };
+                            });
+                        })
+                        .catch(err=>{
+                            this.cliente.msg = `Error al guardar el cliente ${err}`;
+                        });
+                }
                 this.clientes = data.result.filter(cliente=>cliente.nombre.toLowerCase().indexOf(valor.toLowerCase())>-1);
             };
             data.onerror = e=>{
@@ -93,7 +118,6 @@ Vue.component('cliente',{
             <div class="card text-white" id="carCliente">
                 <div class="card-header bg-primary">
                     Registro de Clientes
-
                     <button type="button" class="btn-close text-end" data-bs-dismiss="alert" data-bs-target="#carCliente" aria-label="Close"></button>
                 </div>
                 <div class="card-body text-dark">
@@ -148,7 +172,6 @@ Vue.component('cliente',{
             <div class="card text-white" id="carBuscarCliente">
                 <div class="card-header bg-primary">
                     Busqueda de Clientes
-
                     <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#carBuscarCliente" aria-label="Close"></button>
                 </div>
                 <div class="card-body">
