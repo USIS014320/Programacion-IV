@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\alumno;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 
 class Alumno extends Controller
