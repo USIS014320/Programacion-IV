@@ -52,6 +52,7 @@
             </div>
         </nav>
         <alumno-component v-bind:form="forms" ref="alumno" v-show="forms['alumno'].mostrar" ></alumno-component>
+        <docente-component v-bind:form="forms" ref="docente" v-show="forms['docente'].mostrar" ></docente-component>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

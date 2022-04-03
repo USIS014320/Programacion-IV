@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::apiResources([
     'alumno' => Alumnos::class,
+    'docente' => Docentes::class,
 ]);
 
 Route::get('/', function () {
