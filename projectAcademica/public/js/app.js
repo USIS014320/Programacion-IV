@@ -5966,6 +5966,461 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InscripcionComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InscripcionComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["form"],
+  data: function data() {
+    return {
+      buscar: "",
+      inscripcions: [],
+      inscripcion: {
+        accion: "nuevo",
+        mostrar_msg: false,
+        msg: "",
+        id: 0,
+        idInscripcion: "",
+        codigo: "",
+        materia_1: "",
+        materia_2: "",
+        materia_3: "",
+        materia_4: "",
+        materia_5: "",
+        fecha: "",
+        ciclo: ""
+      }
+    };
+  },
+  methods: {
+    cerrarForm: function cerrarForm() {
+      this.form["inscripcion"].mostrar = false;
+    },
+    sincronizarDatosServidor: function sincronizarDatosServidor(inscripcion, metodo, url) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios({
+                  method: metodo,
+                  url: url,
+                  data: inscripcion
+                }).then(function (resp) {
+                  if (inscripcion.accion == "nuevo") {
+                    inscripcion.id = resp.data.id;
+
+                    _this.insertarLocal(inscripcion); //actualizar el id del inscripcion que se genero en el servidor con laravel y mysql
+
+                  }
+
+                  _this.inscripcion.msg = "Inscripcion procesado ".concat(data.msg);
+                })["catch"](function (err) {
+                  _this.inscripcion.msg = "Error al procesar la inscripcion ".concat(err);
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    insertarLocal: function insertarLocal(inscripcion) {
+      var _this2 = this;
+
+      var store = this.abrirStore("inscripcion", "readwrite"),
+          query = store.put(inscripcion);
+
+      query.onsuccess = function (e) {
+        _this2.nuevoInscripcion();
+
+        _this2.obtenerDatos();
+
+        _this2.inscripcion.msg = "Inscripcion procesada con exito";
+      };
+
+      query.onerror = function (e) {
+        _this2.inscripcion.msg = "Error al procesar la inscripcion ".concat(e.target.error);
+      };
+    },
+    buscandoInscripcion: function buscandoInscripcion() {
+      this.obtenerDatos(this.buscar);
+    },
+    eliminarInscripcion: function eliminarInscripcion(inscripcion) {
+      var _this3 = this;
+
+      if (confirm("Esta seguro de eliminar la inscripcion ".concat(inscripcion.nombre, "?"))) {
+        inscripcion.accion = "eliminar";
+        var store = this.abrirStore("inscripcion", "readwrite"),
+            query = store["delete"](inscripcion.idInscripcion),
+            metodo = "DELETE",
+            url = "/inscripcion/".concat(inscripcion.id);
+        this.sincronizarDatosServidor(inscripcion, metodo, url);
+
+        query.onsuccess = function (e) {
+          _this3.nuevoInscripcion();
+
+          _this3.obtenerDatos();
+
+          _this3.inscripcion.msg = "Inscripcion eliminada con exito";
+        };
+
+        query.onerror = function (e) {
+          _this3.inscripcion.msg = "Error al eliminar la inscripcion ".concat(e.target.error);
+        };
+      }
+
+      this.nuevoInscripcion();
+    },
+    modificarInscripcion: function modificarInscripcion(datos) {
+      this.inscripcion = JSON.parse(JSON.stringify(datos));
+      this.inscripcion.accion = "modificar";
+    },
+    guardarInscripcion: function guardarInscripcion() {
+      var metodo = "PUT",
+          url = "/inscripcion/".concat(this.inscripcion.id);
+
+      if (this.inscripcion.accion == "nuevo") {
+        this.inscripcion.idInscripcion = generarIdUnicoFecha();
+        metodo = "POST";
+        url = "/inscripcion";
+      }
+
+      var inscripcion = JSON.parse(JSON.stringify(this.inscripcion));
+      this.sincronizarDatosServidor(inscripcion, metodo, url);
+      this.insertarLocal(inscripcion);
+    },
+    obtenerDatos: function obtenerDatos() {
+      var _this4 = this;
+
+      var valor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      var store = this.abrirStore("inscripcion", "readonly"),
+          data = store.getAll();
+
+      data.onsuccess = function (e) {
+        if (data.result.length <= 0) {
+          fetch("inscripcion", {
+            credentials: "same-origin"
+          }).then(function (res) {
+            return res.json();
+          }).then(function (data) {
+            _this4.inscripcions = data;
+            data.map(function (inscripcion) {
+              var store = _this4.abrirStore("inscripcion", "readwrite"),
+                  query = store.put(inscripcion);
+
+              query.onsuccess = function (e) {
+                console.log("Inscripcion ".concat(inscripcion.nombre, " guardado"));
+              };
+
+              query.onerror = function (e) {
+                console.log("Error al guardar la inscripcion ".concat(e.target.error));
+              };
+            });
+          })["catch"](function (err) {
+            _this4.inscripcion.msg = "Error al guardar la inscripcion ".concat(err);
+          });
+        }
+
+        _this4.inscripcions = data.result.filter(function (inscripcion) {
+          return inscripcion.nombre.toLowerCase().indexOf(valor.toLowerCase()) > -1;
+        });
+      };
+
+      data.onerror = function (e) {
+        _this4.inscripcion.msg = "Error al obtener las inscripciones ".concat(e.target.error);
+      };
+    },
+    nuevoInscripcion: function nuevoInscripcion() {
+      this.inscripcion.accion = "nuevo";
+      this.inscripcion.msg = "";
+      this.inscripcion.idInscripcion = "";
+      this.inscripcion.codigo = "";
+      this.inscripcion.materia_1 = "";
+      this.inscripcion.materia_2 = "";
+      this.inscripcion.materia_3 = "";
+      this.inscripcion.materia_4 = "";
+      this.inscripcion.materia_5 = "";
+      this.inscripcion.fecha = "";
+      this.inscripcion.ciclo = "";
+    },
+    abrirStore: function abrirStore(store, modo) {
+      return db.transaction(store, modo).objectStore(store);
+    }
+  },
+  created: function created() {//this.obtenerDatos();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MateriaComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MateriaComponent.vue?vue&type=script&lang=js& ***!
@@ -6866,6 +7321,7 @@ Vue.component('alumno-component', (__webpack_require__(/*! ./components/AlumnoCo
 Vue.component('docente-component', (__webpack_require__(/*! ./components/DocenteComponent.vue */ "./resources/js/components/DocenteComponent.vue")["default"]));
 Vue.component('materia-component', (__webpack_require__(/*! ./components/MateriaComponent.vue */ "./resources/js/components/MateriaComponent.vue")["default"]));
 Vue.component('matricula-component', (__webpack_require__(/*! ./components/MatriculaComponent.vue */ "./resources/js/components/MatriculaComponent.vue")["default"]));
+Vue.component('inscripcion-component', (__webpack_require__(/*! ./components/InscripcionComponent.vue */ "./resources/js/components/InscripcionComponent.vue")["default"]));
 Vue.component('notas-component', (__webpack_require__(/*! ./components/NotasComponent.vue */ "./resources/js/components/NotasComponent.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -6890,6 +7346,9 @@ var app = new Vue({
         mostrar: false
       },
       matricula: {
+        mostrar: false
+      },
+      inscripcion: {
         mostrar: false
       },
       anotar: {
@@ -30303,6 +30762,45 @@ component.options.__file = "resources/js/components/DocenteComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/InscripcionComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/InscripcionComponent.vue ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _InscripcionComponent_vue_vue_type_template_id_582f8742___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InscripcionComponent.vue?vue&type=template&id=582f8742& */ "./resources/js/components/InscripcionComponent.vue?vue&type=template&id=582f8742&");
+/* harmony import */ var _InscripcionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InscripcionComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/InscripcionComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InscripcionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InscripcionComponent_vue_vue_type_template_id_582f8742___WEBPACK_IMPORTED_MODULE_0__.render,
+  _InscripcionComponent_vue_vue_type_template_id_582f8742___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/InscripcionComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/MateriaComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/MateriaComponent.vue ***!
@@ -30452,6 +30950,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/InscripcionComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/InscripcionComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InscripcionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./InscripcionComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InscripcionComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InscripcionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/MateriaComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/MateriaComponent.vue?vue&type=script&lang=js& ***!
@@ -30530,6 +31044,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DocenteComponent_vue_vue_type_template_id_168b47f6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DocenteComponent_vue_vue_type_template_id_168b47f6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DocenteComponent.vue?vue&type=template&id=168b47f6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DocenteComponent.vue?vue&type=template&id=168b47f6&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/InscripcionComponent.vue?vue&type=template&id=582f8742&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/InscripcionComponent.vue?vue&type=template&id=582f8742& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InscripcionComponent_vue_vue_type_template_id_582f8742___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InscripcionComponent_vue_vue_type_template_id_582f8742___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InscripcionComponent_vue_vue_type_template_id_582f8742___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./InscripcionComponent.vue?vue&type=template&id=582f8742& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InscripcionComponent.vue?vue&type=template&id=582f8742&");
 
 
 /***/ }),
@@ -31362,6 +31893,594 @@ var staticRenderFns = [
       _c("th", [_vm._v("TEL")]),
       _vm._v(" "),
       _c("th", [_vm._v("DUI")]),
+      _vm._v(" "),
+      _c("th"),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InscripcionComponent.vue?vue&type=template&id=582f8742&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InscripcionComponent.vue?vue&type=template&id=582f8742& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "appAlumno" } }, [
+    _c(
+      "div",
+      { staticClass: "card text-white", attrs: { id: "carInscripcion" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body text-dark" }, [
+          _c(
+            "form",
+            {
+              attrs: { method: "post" },
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.guardarInscripcion.apply(null, arguments)
+                },
+                reset: _vm.nuevoInscripcion,
+              },
+            },
+            [
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [_vm._v("Codigo:")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.inscripcion.codigo,
+                        expression: "inscripcion.codigo",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      title: "Ingrese el codigo",
+                      pattern: "[0-9]{3,10}",
+                      required: "",
+                      type: "text",
+                    },
+                    domProps: { value: _vm.inscripcion.codigo },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.inscripcion, "codigo", $event.target.value)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [_vm._v("Ciclo:")]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col col-md-3" },
+                  [
+                    _c("v-select-matricula", {
+                      directives: [
+                        {
+                          name: "select",
+                          rawName: "v-select",
+                          value: _vm.inscripcion.matricula,
+                          expression: "inscripcion.matricula",
+                        },
+                      ],
+                      attrs: {
+                        options: _vm.matriculas,
+                        placeholder: "Seleccione una matricula",
+                      },
+                    }),
+                  ],
+                  1
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _vm._v("Materia 1:"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "select",
+                        rawName: "v-select",
+                        value: _vm.inscripcion.materia_1,
+                        expression: "inscripcion.materia_1",
+                      },
+                    ],
+                    attrs: { list: "materia_1" },
+                  }),
+                  _vm._v(" "),
+                  _vm._m(1),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _vm._v("Materia 2:"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "select",
+                        rawName: "v-select",
+                        value: _vm.inscripcion.materia_2,
+                        expression: "inscripcion.materia_2",
+                      },
+                    ],
+                    attrs: { list: "materia_2" },
+                  }),
+                  _vm._v(" "),
+                  _vm._m(2),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _vm._v("Materia 3:"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "select",
+                        rawName: "v-select",
+                        value: _vm.inscripcion.materia_3,
+                        expression: "inscripcion.materia_3",
+                      },
+                    ],
+                    attrs: { list: "materia_3" },
+                  }),
+                  _vm._v(" "),
+                  _vm._m(3),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _vm._v("Materia 4:"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "select",
+                        rawName: "v-select",
+                        value: _vm.inscripcion.materia_4,
+                        expression: "inscripcion.materia_4",
+                      },
+                    ],
+                    attrs: { list: "materia_4" },
+                  }),
+                  _vm._v(" "),
+                  _vm._m(4),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _vm._v("Materia 5:"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "select",
+                        rawName: "v-select",
+                        value: _vm.inscripcion.materia_5,
+                        expression: "inscripcion.materia_5",
+                      },
+                    ],
+                    attrs: { list: "materia_5" },
+                  }),
+                  _vm._v(" "),
+                  _vm._m(5),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-2" }, [
+                  _vm._v("Fecha de Inscripcion:"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col col-md-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "select",
+                        rawName: "v-select",
+                        value: _vm.inscripcion.fecha,
+                        expression: "inscripcion.fecha",
+                      },
+                    ],
+                    staticClass: "form-control form-control-sm",
+                    attrs: {
+                      title: "Ingrese la fecha",
+                      pattern: "{0000-00-00}",
+                      required: "",
+                      type: "date",
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row p-1" }, [
+                _c("div", { staticClass: "col col-md-5 text-center" }, [
+                  _vm.inscripcion.mostrar_msg
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "alert alert-primary alert-dismissible fade show",
+                          attrs: { role: "alert" },
+                        },
+                        [
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(_vm.inscripcion.msg) +
+                              "\n              "
+                          ),
+                          _c("button", {
+                            staticClass: "btn-close",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "alert",
+                              "aria-label": "Close",
+                            },
+                          }),
+                        ]
+                      )
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(6),
+            ]
+          ),
+        ]),
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card text-white", attrs: { id: "carBuscarInscripcion" } },
+      [
+        _vm._m(7),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("table", { staticClass: "table table-dark table-hover" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", { attrs: { colspan: "6" } }, [
+                  _vm._v("\n              Buscar:\n              "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.buscar,
+                        expression: "buscar",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "buscar aqui", type: "text" },
+                    domProps: { value: _vm.buscar },
+                    on: {
+                      keyup: _vm.buscandoInscripcion,
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.buscar = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(8),
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.inscripcions, function (item) {
+                return _c(
+                  "tr",
+                  {
+                    key: item.idInscripcion,
+                    on: {
+                      click: function ($event) {
+                        return _vm.modificarInscripcion(item)
+                      },
+                    },
+                  },
+                  [
+                    _c("td", [_vm._v(_vm._s(item.codigo))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.materia_1))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.materia_2))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.materia_3))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.materia_4))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.materia_5))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.fecha))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.matricula.label))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function ($event) {
+                              return _vm.eliminarInscripcion(item)
+                            },
+                          },
+                        },
+                        [_vm._v("\n                Eliminar\n              ")]
+                      ),
+                    ]),
+                  ]
+                )
+              }),
+              0
+            ),
+          ]),
+        ]),
+      ]
+    ),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header bg-primary" }, [
+      _vm._v("\n      Registro de Inscripcions\n      "),
+      _c("button", {
+        staticClass: "btn-close text-end",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "alert",
+          "data-bs-target": "#carInscripcion",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("datalist", { attrs: { id: "materia_1" } }, [
+      _c("option", { attrs: { value: "Programacion II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Programacion VI" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas III" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas I" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Ingenieria de Software" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Principios de Electronica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Formacion Transversal" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Sistemas Operativos" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("datalist", { attrs: { id: "materia_2" } }, [
+      _c("option", { attrs: { value: "Programacion II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Programacion VI" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas III" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas I" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Ingenieria de Software" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Principios de Electronica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Formacion Transversal" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Sistemas Operativos" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("datalist", { attrs: { id: "materia_3" } }, [
+      _c("option", { attrs: { value: "Programacion II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Programacion VI" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas III" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas I" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Ingenieria de Software" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Principios de Electronica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Formacion Transversal" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Sistemas Operativos" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("datalist", { attrs: { id: "materia_4" } }, [
+      _c("option", { attrs: { value: "Programacion II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Programacion VI" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas III" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas I" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Ingenieria de Software" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Principios de Electronica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Formacion Transversal" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Sistemas Operativos" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("datalist", { attrs: { id: "materia_5" } }, [
+      _c("option", { attrs: { value: "Programacion II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Programacion VI" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas III" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Matematicas I" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Ingenieria de Software" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Infraestructura Tecnologica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Principios de Electronica" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Admon de Bases de Datos II" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Formacion Transversal" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Sistemas Operativos" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "Informatica y Sociedad" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row m-2" }, [
+      _c("div", { staticClass: "col col-md-5 text-center" }, [
+        _c("input", {
+          staticClass: "btn btn-success",
+          attrs: { type: "submit", value: "Guardar" },
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "btn btn-warning",
+          attrs: { type: "reset", value: "Nuevo" },
+        }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header bg-primary" }, [
+      _vm._v("\n      Busqueda de Inscripcions\n      "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "alert",
+          "data-bs-target": "#carBuscarInscripcion",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("CODIGO")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("MATERIA 1")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("MATERIA 2")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("MATERIA 3")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("MATERIA 4")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("MATERIA 5")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("FECHA")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("CICLO")]),
       _vm._v(" "),
       _c("th"),
     ])

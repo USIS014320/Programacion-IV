@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class inscripcion extends Model
 {
-    use HasFactory;
+    protected $fiable =['idInscripcion','codigo','materia1','materia2','materia3','materia5','materia5','fehca','ciclo'];
 }
