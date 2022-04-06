@@ -6,11 +6,11 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
-window.db = '';
-window.generarIdUnicoFecha = () => {
+window.Vue = require('vue').default;
+window.db = '',
+window.generarIdUnicoFecha = ()=>{
     let fecha = new Date();
-    return Math.floor(fecha.getTime() / 1000).toString(16);
+    return Math.floor(fecha.getTime()/1000).toString(16);
 }
 /**
  * The following block of code may be used to automatically register your
@@ -23,8 +23,13 @@ window.generarIdUnicoFecha = () => {
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('docente-component', require('./components/DocenteComponent.vue').default);
 Vue.component('alumno-component', require('./components/AlumnoComponent.vue').default);
+Vue.component('docente-component', require('./components/DocenteComponent.vue').default);
+Vue.component('materia-component', require('./components/MateriaComponent.vue').default);
+Vue.component('matricula-component', require('./components/MatriculaComponent.vue').default);
+Vue.component('notas-component', require('./components/NotasComponent.vue').default);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,22 +38,22 @@ Vue.component('alumno-component', require('./components/AlumnoComponent.vue').de
 
 const app = new Vue({
     el: '#app',
-    data: {
+    data:{
         forms:{
             alumno:{mostrar:false},
             materia:{mostrar:false},
             docente:{mostrar:false},
             nota:{mostrar:false},
             matricula:{mostrar:false},
-            inscripcion:{mostrar:false},
+            anotar:{mostrar:false},
         }
     },
-    methods: {
-        abrirForm(form) {
+    methods:{
+        abrirForm(form){
             this.forms[form].mostrar = !this.forms[form].mostrar;
             this.$refs[form].obtenerDatos();
         },
-        abrirBd() {
+        abrirBd(){
             /**
              * Mecanismos de Almacenamiento
              * 1. WebSQL
@@ -62,28 +67,33 @@ const app = new Vue({
                 tblmateria = db.createObjectStore('materia', {keyPath:'idMateria'});
                 tbldocente = db.createObjectStore('docente', {keyPath:'idDocente'});
                 tblmatricula = db.createObjectStore('matricula', {keyPath:'idMatricula'});
+                tblnota = db.createObjectStore('nota', {keyPath:'idNota'});
+                tblinscripcion = db.createObjectStore('inscripcion', {keyPath:'idInscripcion'});
 
                 tblalumno.createIndex('idAlumno', 'idAlumno', {unique:true});
                 tblalumno.createIndex('codigo', 'codigo', {unique:false});
-
-                tbldocente.createIndex('idDocente', 'idDocente', {unique:true});
-                tbldocente.createIndex('codigo', 'codigo', {unique:false});
 
                 tblmateria.createIndex('idMateria', 'idMateria', {unique:true});
                 tblmateria.createIndex('codigo', 'codigo', {unique:false});
 
                 tblmatricula.createIndex('idMatricula', 'idMatricula', {unique:true});
                 tblmatricula.createIndex('idAlumno', 'idAlumno', {unique:false});
+
+                tblnota.createIndex('idNota', 'idNota', {unique:true});
+                tblnota.createIndex('idMatricula', 'idMatricula', {unique:false});
+
+                tblinscripcion.createIndex('idInscripcion', 'idInscripcion', {unique:true});
+                tblinscripcion.createIndex('idAlumno', 'idAlumno', {unique:false});
             };
-            indexDb.onsuccess = e => {
+            indexDb.onsuccess = e=>{
                 db = e.target.result;
             };
-            indexDb.onerror = e => {
+            indexDb.onerror = e=>{
                 console.log(e.target.error);
             };
         },
-        },
-        created() {
+    },
+    created(){
         this.abrirBd();
-        }
-        });
+    }
+});

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\docente;
+use App\Models\inscripcion;
 use Illuminate\Http\Request;
 
-class Docentes extends Controller
+class Inscripciones extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()//GET
+    public function index()
     {
-        return docente::get();//select * from docente
+        //
     }
 
     /**
@@ -33,30 +33,29 @@ class Docentes extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)//POST
+    public function store(Request $request)
     {
-        $id = Docente::create($request->all())->id;//insert into docente...
-        return response()->json(['id'=>$id], 200);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\docente  $docente
+     * @param  \App\Models\inscripcion  $inscripcion
      * @return \Illuminate\Http\Response
      */
-    public function show(docente $docente)
+    public function show(inscripcion $inscripcion)
     {
-        return $docente;//select * from docente where id = $id
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\docente  $docente
+     * @param  \App\Models\inscripcion  $inscripcion
      * @return \Illuminate\Http\Response
      */
-    public function edit(docente $docente)
+    public function edit(inscripcion $inscripcion)
     {
         //
     }
@@ -65,24 +64,22 @@ class Docentes extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\docente  $docente
+     * @param  \App\Models\inscripcion  $inscripcion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, docente $docente)//PUT
+    public function update(Request $request, inscripcion $inscripcion)
     {
-        $docente->update($request->all());//update docente set... where id = $id
-        return response()->json(['id'=>$request->id], 200);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\docente  $docente
+     * @param  \App\Models\inscripcion  $inscripcion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(docente $docente)//DELETE
+    public function destroy(inscripcion $inscripcion)
     {
-        $docente->delete();//delete from docente where id = $id
-        return response()->json(['id'=>$docente->id], 200);
+        //
     }
 }

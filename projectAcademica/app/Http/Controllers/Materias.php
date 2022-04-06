@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\alumno;
+use App\Models\materia;
 use Illuminate\Http\Request;
 
-class Alumnos extends Controller
+class Materias extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()//GET
+    public function index()
     {
-        return alumno::get();//select * from alumno
+        return materia::get();//select * from materia
     }
 
     /**
@@ -33,30 +33,30 @@ class Alumnos extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)//POST
+    public function store(Request $request)
     {
-        $id = alumno::create($request->all())->id;//insert into alumno...
+        $id = materia::create($request->all())->id;//insert into materia...
         return response()->json(['id'=>$id], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function show(alumno $alumno)
+    public function show(materia $materia)
     {
-        return $alumno;//select * from alumno where id = $id
+        return $materia;//select * from materia where id = $id
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function edit(alumno $alumno)
+    public function edit(materia $materia)
     {
         //
     }
@@ -65,24 +65,24 @@ class Alumnos extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, alumno $alumno)//PUT
+    public function update(Request $request, materia $materia)
     {
-        $alumno->update($request->all());//update alumno set... where id = $id
-        return response()->json(['id'=>$request->id], 200);
+        $materia->update($request->all()); //update materia set ... where id = $id
+        return response()->json(['id'=>true], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(alumno $alumno)//DELETE
+    public function destroy(materia $materia)
     {
-        $alumno->delete();//delete from alumno where id = $id
-        return response()->json(['id'=>$alumno->id], 200);
+        $materia->delete();//delete from materia where id = $id
+        return response()->json(['id'=>$materia->id], 200);
     }
 }

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\alumno;
+use App\Models\nota;
 use Illuminate\Http\Request;
 
-class Alumnos extends Controller
+class Notas extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()//GET
+    public function index()
     {
-        return alumno::get();//select * from alumno
+        return nota::get();
     }
 
     /**
@@ -33,30 +33,30 @@ class Alumnos extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)//POST
+    public function store(Request $request)
     {
-        $id = alumno::create($request->all())->id;//insert into alumno...
+        $id = nota::create($request->all())->id;//insert into matricula...
         return response()->json(['id'=>$id], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function show(alumno $alumno)
+    public function show(nota $nota)
     {
-        return $alumno;//select * from alumno where id = $id
+        return $nota;//select * from matricula where id = $id
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function edit(alumno $alumno)
+    public function edit(nota $nota)
     {
         //
     }
@@ -65,24 +65,24 @@ class Alumnos extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, alumno $alumno)//PUT
+    public function update(Request $request, nota $nota)
     {
-        $alumno->update($request->all());//update alumno set... where id = $id
+        $nota->update($request->all()); //update matricula set... where id = $id
         return response()->json(['id'=>$request->id], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\alumno  $alumno
+     * @param  \App\Models\nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(alumno $alumno)//DELETE
+    public function destroy(nota $nota)
     {
-        $alumno->delete();//delete from alumno where id = $id
-        return response()->json(['id'=>$alumno->id], 200);
+        $matricula->delete();//delete from matricula where id = $id
+        return response()->json(['id'=>$matricula->id], 200);
     }
 }

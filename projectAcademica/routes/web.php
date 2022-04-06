@@ -16,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::apiResources([
-    'alumno' => Alumnos::class,
-    'docente' => Docentes::class,
+        'alumno'=>Alumnos::class,
+        'docente'=>Docentes::class,
+        'materia'=>Materias::class,
+        'matricula'=>Matriculas::class,
+        'inscripcion'=>Inscripciones::class,
+        'nota'=>Notas::class,
 ]);
+
 
 Route::get('/', function () {
     return view('welcome');
