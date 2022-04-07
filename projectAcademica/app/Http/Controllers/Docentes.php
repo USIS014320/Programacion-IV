@@ -35,7 +35,7 @@ class Docentes extends Controller
      */
     public function store(Request $request)
     {
-        $id = docente::create($request->all())->id;//insert into docente...
+        $id = Docente::create($request->all())->id;//insert into docente...
         return response()->json(['id'=>$id], 200);
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\alumno;
+use App\Models\alumno;
 use Illuminate\Http\Request;
 
 class Alumnos extends Controller
@@ -12,7 +12,7 @@ class Alumnos extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()//GET
+    public function index()
     {
         return alumno::get();//select * from alumno
     }
@@ -33,9 +33,9 @@ class Alumnos extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)//POST
+    public function store(Request $request)
     {
-        $id = alumno::create($request->all())->id;//insert into alumno...
+        $id = Alumno::create($request->all())->id;//insert into alumno...
         return response()->json(['id'=>$id], 200);
     }
 
@@ -68,9 +68,9 @@ class Alumnos extends Controller
      * @param  \App\Models\alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, alumno $alumno)//PUT
+    public function update(Request $request, alumno $alumno)
     {
-        $alumno->update($request->all());//update alumno set... where id = $id
+        $alumno->update($request->all());//update alumno set ... where id = $id
         return response()->json(['id'=>$request->id], 200);
     }
 
@@ -80,7 +80,7 @@ class Alumnos extends Controller
      * @param  \App\Models\alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function destroy(alumno $alumno)//DELETE
+    public function destroy(alumno $alumno)
     {
         $alumno->delete();//delete from alumno where id = $id
         return response()->json(['id'=>$alumno->id], 200);

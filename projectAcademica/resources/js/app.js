@@ -44,10 +44,9 @@ const app = new Vue({
             alumno:{mostrar:false},
             materia:{mostrar:false},
             docente:{mostrar:false},
-            nota:{mostrar:false},
             matricula:{mostrar:false},
             inscripcion:{mostrar:false},
-            anotar:{mostrar:false},
+            nota:{mostrar:false},
         }
     },
     methods:{

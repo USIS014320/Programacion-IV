@@ -35,7 +35,7 @@ class Notas extends Controller
      */
     public function store(Request $request)
     {
-        $id = nota::create($request->all())->id;//insert into matricula...
+        $id = Nota::create($request->all())->id;//insert into nota...
         return response()->json(['id'=>$id], 200);
     }
 
@@ -47,7 +47,7 @@ class Notas extends Controller
      */
     public function show(nota $nota)
     {
-        return $nota;//select * from matricula where id = $id
+        return $nota;//select * from nota where id = $id
     }
 
     /**
@@ -70,7 +70,7 @@ class Notas extends Controller
      */
     public function update(Request $request, nota $nota)
     {
-        $nota->update($request->all()); //update matricula set... where id = $id
+        $nota->update($request->all()); //update nota set... where id = $id
         return response()->json(['id'=>$request->id], 200);
     }
 
@@ -82,7 +82,7 @@ class Notas extends Controller
      */
     public function destroy(nota $nota)
     {
-        $matricula->delete();//delete from matricula where id = $id
-        return response()->json(['id'=>$matricula->id], 200);
+        $nota->delete();//delete from nota where id = $id
+        return response()->json(['id'=>$nota->id], 200);
     }
 }

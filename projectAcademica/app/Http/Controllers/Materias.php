@@ -35,7 +35,7 @@ class Materias extends Controller
      */
     public function store(Request $request)
     {
-        $id = materia::create($request->all())->id;//insert into materia...
+        $id = Materia::create($request->all())->id;//insert into materia...
         return response()->json(['id'=>$id], 200);
     }
 

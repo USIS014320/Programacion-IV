@@ -35,7 +35,7 @@ class Matriculas extends Controller
      */
     public function store(Request $request)
     {
-        $id = matricula::create($request->all())->id;//insert into matricula...
+        $id = Matricula::create($request->all())->id;//insert into matricula...
         return response()->json(['id'=>$id], 200);
     }
 
