@@ -35,8 +35,8 @@
               <div class="row p-1">
                 <div class="col col-md-3">Ciclo:</div>
                 <div class="col">
-                  <input list="materia_1" v-select="inscripcion.materia_1" />
-                  <datalist id="materia_1">
+                  <input list="ciclo" v-select="inscripcion.ciclo"/>
+                  <datalist id="ciclo">
                     <option value="Ciclo I"></option>
                     <option value="Ciclo II"></option>
                     <option value="Ciclo III"></option>
@@ -50,7 +50,6 @@
                   </datalist>
                 </div>
               </div>
-
               <div class="row p-1">
                 <div class="col col-md-3">Materia 1:</div>
                 <div class="col">

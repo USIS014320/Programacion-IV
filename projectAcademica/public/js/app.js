@@ -6260,7 +6260,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["form"],
   data: function data() {
@@ -32085,11 +32084,11 @@ var render = function () {
                           {
                             name: "select",
                             rawName: "v-select",
-                            value: _vm.inscripcion.materia_1,
-                            expression: "inscripcion.materia_1",
+                            value: _vm.inscripcion.ciclo,
+                            expression: "inscripcion.ciclo",
                           },
                         ],
-                        attrs: { list: "materia_1" },
+                        attrs: { list: "ciclo" },
                       }),
                       _vm._v(" "),
                       _vm._m(1),
@@ -32409,7 +32408,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("datalist", { attrs: { id: "materia_1" } }, [
+    return _c("datalist", { attrs: { id: "ciclo" } }, [
       _c("option", { attrs: { value: "Ciclo I" } }),
       _vm._v(" "),
       _c("option", { attrs: { value: "Ciclo II" } }),
