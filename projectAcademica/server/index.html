@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creacion de Usuarios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/themes/bootstrap.min.css">
+</head>
+<body>
+    <form id="frmUsuarios" method="get">
+        Nombre: <input type="text" id="txtUsuario" required>
+        Clave: <input type="password" id="txtClave" required>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Nuevo">
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" 
+        integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" 
+        crossorigin="anonymous"></script>
+    
+    <script>
+        var io = io('http://localhost:3001');
+        io.on('connection',function(socket){
+            console.log('Conectado al servidor via socket.io');
+        });
+        if(!Notification){
+            alertify.error('El navegador no soporta notificaciones');
+        }
+        window.permitirNotificaciones = 'default';
+
+        if(Notification.permission !== 'denied'){
+            Notification.requestPermission(function(permission){
+                permitirNotificaciones = permission;
+            });
+        } else {
+            permitirNotificaciones = 'denied';
+        }
+
+        const frm = document.querySelector('#frmUsuarios');
+        frm.addEventListener('submit', e=>{
+            e.preventDefault();
+
+            const usuario = document.querySelector("#txtUsuario").value,
+                clave = document.querySelector("#txtClave").value;
+            let datos = {
+                usuario,
+                clave
+            };
+            fetch('/usuarios/save',{
+                method : 'POST',
+                body : JSON.stringify(datos),
+                headers : {
+                    'Content-Type' : 'application/json'
+                }
+            }).then(res=>res.json())
+            .then(respuesta=>{
+                console.log(respuesta);
+            })
+        });
+        frm.addEventListener('reset', e=>{
+            e.preventDefault();
+            document.querySelectorAll("#frmUsuarios input[type='text'], #frmUsuarios input[type=password]").forEach(element => {
+                element.value='';
+            });
+
+            if( permitirNotificaciones=='granted' ){
+                var notificacion = new Notification('Saludo', {
+                    body : 'Hola Mundo',
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
     <div id="appAlumno">
         <div class="row">
             <div class="col col-md-4">
-                <vue-resizable :fit-parent="fit" :dragSelector="selector" :width="500">
+                <!--<vue-resizable :fit-parent="fit" :dragSelector="selector" :width="500">-->
                 <div class="card text-white" id="carAlumno">
                     <div class="card-header bg-primary">
                         Registro de Alumnos
@@ -57,10 +57,10 @@
                         </form>
                     </div>
                 </div>
-                </vue-resizable>
+                <!--</vue-resizable>-->
             </div>
             <div class="col col-md-8">
-                <vue-resizable :dragSelector="selector" :width="600">
+                <!--<vue-resizable :dragSelector="selector" :width="600">-->
                 <div class="card text-white" id="carBuscarAlumno">
                     <div class="card-header bg-primary">
                         Busqueda de Alumnos
@@ -98,14 +98,14 @@
                         </table>
                     </div>
                 </div>
-                </vue-resizable>
+                <!--</vue-resizable>-->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    Vue.component('vue-resizable', VueResizable.default);
+    //Vue.component('vue-resizable', VueResizable.default);
     export default {
         props : ['form'],
          data:()=>{
