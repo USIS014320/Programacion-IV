@@ -17,7 +17,7 @@
                             <div class="row p-1">
                                 <div class="col col-md-3">Alumno:</div>
                                 <div class="col">
-                                    <v-select-alumno title="Seleccione el alumno" v-model="matricula.alumno" :options="alumnos" required class="form-control"/>
+                                    <vSelect title="Seleccione el alumno" v-model="matricula.alumno" :options="alumnos" required class="form-control"/>
                                 </div>
                             </div>
                             <div class="row p-1">
@@ -87,8 +87,14 @@
 
 <script>
     //Vue.component('vue-resizable', VueResizable.default);
+    import vSelect from 'vue-select';
+    import 'vue-select/dist/vue-select.css';
+    
     export default {
         props : ['form'],
+        components: {
+            vSelect
+        },
          data:()=>{
             return {
                 selector: '.card',
