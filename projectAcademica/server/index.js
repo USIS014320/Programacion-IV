@@ -4,11 +4,39 @@ const express = require('express'),
     url = 'mongodb://localhost:27017',
     port = 3001,
     http = require('http').Server(server)
-    io = require('socket.io')(http);
+    io = require('socket.io')(http, {
+        allowEI03:true,
+        cors:{
+            origin:['http://localhost:8000'],
+            credentials:true
+        }
+    });
 server.use(express.json());
 
-io.on('connection',function(socket){
+io.on('connect', function (socket) {
     console.log('Conectado via socket');
+
+    socket.on('historial', function (e) {
+        mongodb.connect(url, function (err, client) {
+            if (err) console.log(err);
+            const db = client.db('chatDB');
+            db.collection('chat').find().toArray(function (err, chats) {
+                if (err) console.log(err);
+                socket.emit('historial', chats); //enviamos los datos a quien los solicito
+            });
+        });
+    });
+    socket.on('chat', function (chat) {
+        mongodb.connect(url, function (err, client) {
+            if (err) console.log(err);
+            const db = client.db('chatDB');
+            db.collection('chat').insertOne(chat).then(err, result => {
+                io.emit('chat', chat); //enviar a todos el mensaje recibido
+            }).catch(err => {
+                console.log(err);
+            });
+        });
+    });
 });
 
 server.get('/chat', function(req, resp){

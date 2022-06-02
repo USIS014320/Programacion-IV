@@ -13,6 +13,10 @@ window.generarIdUnicoFecha = ()=>{
     let fecha = new Date();
     return Math.floor(fecha.getTime()/1000).toString(16);
 }
+window.sockectio = io('http://localhost:3001');
+sockectio.on('connect',function(e){
+    console.log('conectado');
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
